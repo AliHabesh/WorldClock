@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Clock from './Clock'
 import CountryDataForm from './CountryDataForm';
 
@@ -9,7 +9,21 @@ import CountryDataForm from './CountryDataForm';
 const MainPage = (props) => {
 
     const [countryData, setCountryData] = useState();
- 
+    const [countryCode, setCountryCode] = useState('France');
+
+    useEffect(() =>{
+
+      axios.get('https://restcountries.com/v3.1/alpha/'+countryCode).then(response => {
+          
+        setCountryData(response.data);
+        console.log("TESTING 1010: "+response.data);
+       
+
+     }).catch(error => {
+         console.log(error);
+     })
+    }, [])
+
 
     const handleChange = (e) => {
         const countryCode = e.target.value;
@@ -32,9 +46,11 @@ const MainPage = (props) => {
 
 
   return (
-    <div className='w-full h-full flex flex-col'>
-    <h1 className='text-white text-8xl font-semibold pt-5'>World Clock</h1>
-    <select onChange={handleChange}  id="countries" className="mt-10 ml-[600px] w-128 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+    
+    <div className='flex flex-col items-center justify-center'>
+   
+   
+    <select onChange={handleChange}  id="countries" className="w-128 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-28 ">
   <option selected>Choose a country</option>
   <option value="AF">Afghanistan</option>
     <option value="AX">Aland Islands</option>
@@ -44,7 +60,6 @@ const MainPage = (props) => {
     <option value="AD">Andorra</option>
     <option value="AO">Angola</option>
     <option value="AI">Anguilla</option>
-    <option value="AQ">Antarctica</option>
     <option value="AG">Antigua and Barbuda</option>
     <option value="AR">Argentina</option>
     <option value="AM">Armenia</option>
@@ -290,8 +305,8 @@ const MainPage = (props) => {
     <option value="ZW">Zimbabwe</option>
 </select>
 
-    <div className='flex flex-row pt-20 pl-96'>
-    <Clock />
+    <div className='flex flex-row pt-16'>
+    <Clock/>
     <CountryDataForm countryData={countryData}/>
     </div>
     
