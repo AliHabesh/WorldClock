@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/WorldClock/static/css/main.8d99d575.css",
+    "main.js": "/WorldClock/static/js/main.7c36c503.js",
+    "static/js/787.943d9943.chunk.js": "/WorldClock/static/js/787.943d9943.chunk.js",
+    "index.html": "/WorldClock/index.html",
+    "main.8d99d575.css.map": "/WorldClock/static/css/main.8d99d575.css.map",
+    "main.7c36c503.js.map": "/WorldClock/static/js/main.7c36c503.js.map",
+    "787.943d9943.chunk.js.map": "/WorldClock/static/js/787.943d9943.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8d99d575.css",
+    "static/js/main.7c36c503.js"
+  ]
+}
